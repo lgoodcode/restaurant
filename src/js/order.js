@@ -4,7 +4,7 @@
  *  Will need to implement a DB to query or some storage to determine whether a date is taken
  *  or not, as well as time.
  */
-$('form.order-form').submit(function(event) {
+$('form.order-form').on("submit", function(event) {
 //   document.getElementById('test').addEventListener('submit', function(event) {
   event.preventDefault();
   const name_regexp = /^[^\s\W]+\w{2,40}$/gi;

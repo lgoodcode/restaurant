@@ -21,7 +21,7 @@ self.addEventListener('activate', function(event) {
         })
       )
     })
-    .then(console.log('[ServiceWorker] Successfully activated', self.serviceWorker))
+    .then(console.log('[ServiceWorker] Successfully activated', self.ServiceWorker))
     // Immediately claim clients under this serviceWorker
     .then(self.clients.claim())
     // Send the message to client to reload for serviceWorker
