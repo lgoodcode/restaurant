@@ -1,0 +1,19 @@
+{
+  "name": "Fish Fried Fresh",
+  "short_name": "Fish Fried",
+  "description": "High quality food truck with a see through deli and fresh fish on ice daily!",
+  "display": "fullscreen",
+  "scope": "/",
+  "icons": [{
+    "src": "/img/favicon.png",
+    "type": "image/png",
+    "sizes": "128x128"
+  }, {
+    "src": "/img/apple-touch-icon.png",
+    "type": "image/png",
+    "sizes": "180x180"
+  }],
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "start_url": "/home"
+}

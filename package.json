@@ -1,0 +1,13 @@
+{
+  "name": "restaurant",
+  "version": "0.0.1",
+  "description": "Template for restaurant webapps",
+  "author": "Lawrence Good",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node cluster.js env=production",
+    "test": "node inspect app.js"
+  },
+  "license": "MIT"
+}
