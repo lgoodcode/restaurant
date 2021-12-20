@@ -4,7 +4,7 @@ const fs = require("fs");
 const cluster = require("cluster");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const session = require("express-session");
+const session = require("cookie-session");
 const cors = require("cors");
 // Using the cookie adheres to the double cookie submit CSRF protection
 const csurf = require("csurf")({ cookie: true });
@@ -62,13 +62,12 @@ app.use(cors());
 app.use(cookieParser());
 // Create sessions stored in memory and not just in cookies
 app.use(session({
-  resave: false, // don"t save session if unmodified
-  saveUninitialized: true, // don"t create session until something stored
   secret: process.env.COOKIE_SECRET,
   name: "session",
   cookie: {
     secure: false,
-    sameSite: "Lax"
+    sameSite: "lax",
+    httpOnly: true
   }
 }));
 // Compress all responses

@@ -1,2 +1,6 @@
 # ignore node modules
-node_modules
+/node_modules
+
+# webpack stats for bundle analyzing
+/stats.json
+
