@@ -1,32 +1,29 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const path = require("path");
-// const webpack = require("webpack");
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const isDev = process.env.NODE_ENV !== "production";
+const { resolve } = require('path');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const isDev = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  mode: isDev ? "development" : "production",
+  mode: isDev ? 'development' : 'production',
   entry: [
-    // isDev && HMR ? "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000reload&true" : undefined,
-    "./src/js/main.js",
+    './src/js/main.js',
   ],
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "public", "dist"),
+    filename: '[name].bundle.js',
+    path: resolve(__dirname, 'public', 'dist'),
     clean: true,
-    publicPath: "/public",
+    publicPath: '/public',
   },
-  devtool: isDev ? "source-map" : false,
+  devtool: isDev ? 'inline-source-map' : false,
   optimization: {
     usedExports: true,
     splitChunks: {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
+          name: 'vendors',
+          chunks: 'all',
         },
       },
     },
@@ -37,19 +34,16 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          "style-loader", 
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
+            // Ignore url images in css from bundling
             options: {
               url: false,
-            }
+            },
           },
         ],
       },
-      {
-        test: /.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource"
-      },
-    ]
-  }
+    ],
+  },
 };

@@ -641,14 +641,16 @@
                 reservation. Thank you!</div>
             </div>
             <div class="text-center"><button type="submit" class="btn-submit">Place Order</button></div>
-            <input type="hidden" name="_csrf" content="{{csrfToken}}">
+            <input type="hidden" name="_csrf" content="<%= csrfToken %>">
           </form>
 
         </div>
 
       </section>
       <!-- End Place an Order Section -->
+
       <div class="place-order-overlay"></div>
+
     </main><!-- End #main -->
 
     <%- include("./partials/footer"); %>
