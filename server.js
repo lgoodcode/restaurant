@@ -12,8 +12,9 @@ const morgan = require('morgan');
 const compression = require('compression');
 
 const mainRouter = require('./routes/mainRouter');
-
 const app = express();
+const isDev = process.env.NODE_ENV !== 'production';
+
 
 let log;
 let error;
@@ -24,27 +25,11 @@ if (process.env.APP_NAME) {
   process.title = process.env.APP_NAME;
 }
 
-if (process.env.NODE_ENV === 'development') {
+if (isDev) {
   const debug = require('debug');
   log = debug('app:log');
   error = debug('app:error');
   debug.log = console.log.bind(console); // Don't forget to bind to console!
-
-  // if (process.env.HMR === 'true') {
-  //   const webpack = require("webpack");
-  //   const webpackConfig = require("./webpack.config");
-  //   const compiler = webpack(webpackConfig);
-
-  //   app.use(require("webpack-dev-middleware")(compiler, {
-  //     publicPath: webpackConfig.output.publicPath,
-  //   }));
-
-  //   app.use(require('webpack-hot-middleware')(compiler, {
-  //     log: console.log,
-  //     path: '/__webpack_hmr',
-  //     heartbeat: 10 * 1000,
-  //   }));
-  // }
 } else {
   log = console.log;
   error = console.error;

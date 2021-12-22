@@ -3,6 +3,15 @@
 import '../css/style.css';
 import './order';
 
+if (module.hot) {
+  console.log('triggered');
+  module.hot.accept();
+}
+
+$('.btn-place-order').on('click', function() {
+  alert('test');
+});
+
 $.when($.ready).then(function() {
   // Preloader
   $('#preloader')

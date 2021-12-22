@@ -1,11 +1,11 @@
+
 require('dotenv').config();
 
 const { resolve } = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-const isDev = process.env.NODE_ENV !== 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  mode: isDev ? 'development' : 'production',
+  mode: isProd ? 'production' : 'development',
   entry: [
     './src/js/main.js',
   ],
@@ -13,10 +13,11 @@ module.exports = {
     filename: '[name].bundle.js',
     path: resolve(__dirname, 'public', 'dist'),
     clean: true,
-    publicPath: '/public',
+    publicPath: '/public/dist',
   },
-  devtool: isDev ? 'inline-source-map' : false,
+  devtool: isProd ? 'eval-cheap-module-source-map' : false,
   optimization: {
+    emitOnErrors: false,
     usedExports: true,
     splitChunks: {
       cacheGroups: {
